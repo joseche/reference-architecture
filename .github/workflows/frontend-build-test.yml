@@ -1,10 +1,14 @@
-name: Build and Test FrontEnd React Application
+name: Build and Test FrontEnd React Application when Frontend files are edited
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - frontend/**.js
   pull_request:
     branches: [ main ]
+    paths:
+      - frontend/**.js
 
 jobs:
   build_test:
@@ -15,7 +19,6 @@ jobs:
         node-version: [18.x, 19.x, 20.x, 21.x]
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
