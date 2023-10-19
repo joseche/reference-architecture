@@ -1,4 +1,4 @@
-   Copyright 2023 Jose Hidalgo
+Copyright 2023 Jose Hidalgo
 
 # Reference Architecture
 
