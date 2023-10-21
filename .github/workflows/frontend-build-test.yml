@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [18.x, 21.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -30,3 +30,13 @@ jobs:
           npm ci
           npm run build --if-present
           npm test
+      - name: Docker Build and Publish
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: joseche/reference-architecture/frontend
+          registry: docker.pkg.github.com
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.TOKEN }}
+          dockerfile: frontend/Dockerfile
+          tags: latest
+        
