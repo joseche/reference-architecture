@@ -51,12 +51,13 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git tag ${{ steps.versioning.outputs.version }}
-          git commit -a -m "tag: ${{ steps.versioning.outputs.version }}"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          force: true
-          tags: true
+          git commit -m "tag: ${{ steps.versioning.outputs.version }}" --allow-empty --force-with-lease
+          git push --tags
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     force: true
+      #     tags: true
       - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
