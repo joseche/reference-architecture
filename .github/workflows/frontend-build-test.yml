@@ -41,7 +41,6 @@ jobs:
             joseche/reference-architecture/frontend
           tags: |
             type=semver,pattern={{version}}
-            type=sha
       - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
