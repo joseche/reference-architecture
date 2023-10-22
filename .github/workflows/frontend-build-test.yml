@@ -1,5 +1,5 @@
 # workflow name
-name: Test, Build Publish FrontEnd
+name: Test, Build & Publish FrontEnd
 
 # events
 on:
