@@ -14,43 +14,56 @@ on:
 
 # jobs
 jobs:
-  test:
+  build-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [21.x]
         # node-version: [18.x, 21.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm ci, build and test
+      - name: NPM ci, build and test
         run: |
           cd frontend
           npm ci
           npm run build --if-present
           npm test
   publish:
-    needs: test
+    needs: build-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
+      - uses: actions/checkout@v4
+      - name: inc semver
+        uses: MCKanpolat/auto-semver-action@v1
+        id: versioning
         with:
-          images: joseche/reference-architecture/frontend
-          tags: 
-            type=semver,pattern={{version}}
+          releaseType: patch 
+          incrementPerCommit: false
+          github_token: ${{ secrets.TOKEN }}
+      - name: print semver
+        run: echo ${{ steps.versioning.outputs.version }}
+      - name: Commit semver tag
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -d ${{ steps.versioning.outputs.version }}
+          git tag ${{ steps.versioning.outputs.version }}
+          git commit -a -m "tag: ${{ steps.versioning.outputs.version }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          tags: true
       - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: joseche/reference-architecture/frontend
           registry: ghcr.io
-          # username: ${{ secrets.USERNAME }}
           username: ${{ github.actor }}
           password: ${{ secrets.TOKEN }}
           workdir: frontend
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.versioning.outputs.version }}
