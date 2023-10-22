@@ -31,7 +31,7 @@ jobs:
           npm run build --if-present
           npm test
       - name: Docker Build and Publish
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: joseche/reference-architecture/frontend
           registry: docker.pkg.github.com
