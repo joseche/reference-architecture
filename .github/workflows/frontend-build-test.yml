@@ -37,6 +37,7 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.TOKEN }}
-          dockerfile: frontend/Dockerfile
+          workdir: frontend
+          dockerfile: Dockerfile
           tags: latest
         
