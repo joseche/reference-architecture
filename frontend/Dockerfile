@@ -5,13 +5,13 @@ WORKDIR /usr/src/app
 
 # copy package files and install dependencies
 COPY package*.json ./
-RUN npm install
+RUN yarn install
 
 # copy the app
 COPY . .
 
 # build the js and css
-RUN npm run build
+RUN yarn run build
 
 # Nginx configuration
 FROM nginx:stable-alpine3.17-slim

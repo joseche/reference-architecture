@@ -29,9 +29,8 @@ jobs:
       - name: NPM ci, build and test
         run: |
           cd frontend
-          npm ci
-          npm run build --if-present
-          npm test
+          yarn run build --if-present
+          yarn test
   publish:
     needs: build-test
     runs-on: ubuntu-latest
