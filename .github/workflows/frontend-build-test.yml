@@ -51,7 +51,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git tag ${{ steps.versioning.outputs.version }}
-          git commit -m "tag: ${{ steps.versioning.outputs.version }}" --allow-empty --force-with-lease
+          git commit -m "tag: ${{ steps.versioning.outputs.version }}" --allow-empty
           git push --tags
       # - name: Push changes
       #   uses: ad-m/github-push-action@master
