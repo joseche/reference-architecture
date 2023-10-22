@@ -1,5 +1,7 @@
-name: Build and Test FrontEnd React Application when Frontend files are edited
+# workflow name
+name: Test, Build Publish FrontEnd
 
+# events
 on:
   push:
     branches: [ main ]
@@ -10,12 +12,14 @@ on:
     paths:
       - frontend/**.js
 
+# jobs
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 21.x]
+        node-version: [21.x]
+        # node-version: [18.x, 21.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -37,17 +41,16 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: |
-            joseche/reference-architecture/frontend
-          tags: |
+          images: joseche/reference-architecture/frontend
+          tags: 
             type=semver,pattern={{version}}
       - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
           name: joseche/reference-architecture/frontend
-          registry: docker.pkg.github.com
-          username: ${{ secrets.USERNAME }}
+          registry: ghcr.io
+          # username: ${{ secrets.USERNAME }}
+          username: ${{ github.actor }}
           password: ${{ secrets.TOKEN }}
           workdir: frontend
-          dockerfile: Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
