@@ -47,15 +47,13 @@ jobs:
           releaseType: patch 
           incrementPerCommit: false
           github_token: ${{ secrets.TOKEN }}
-      - name: print semver
-        run: echo ${{ steps.versioning.outputs.version }}
-      - name: Commit semver tag
+      - name: Commit Semver Tag
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git tag ${{ steps.versioning.outputs.version }}
           git commit -m "tag: ${{ steps.versioning.outputs.version }}" --allow-empty
-      - name: Push changes
+      - name: Push Tag
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN }}
