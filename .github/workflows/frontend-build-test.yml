@@ -33,6 +33,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            joseche/reference-architecture/frontend
+          tags: |
+            type=semver,pattern={{version}}
+            type=sha
       - name: Docker Build and Publish
         uses: elgohr/Publish-Docker-Github-Action@v4
         with:
@@ -42,4 +51,4 @@ jobs:
           password: ${{ secrets.TOKEN }}
           workdir: frontend
           dockerfile: Dockerfile
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
