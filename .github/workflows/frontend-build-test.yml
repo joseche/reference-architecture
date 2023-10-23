@@ -26,10 +26,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: NPM ci, build and test
+      - name: yarn build and test
         run: |
           cd frontend
-          yarn run build --if-present
+          yarn install
+          yarn run build
           yarn test
   publish:
     needs: build-test
