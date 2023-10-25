@@ -1,14 +1,13 @@
 import './App.css';
 import MainNavBar from './components/MainNavBar';
-import AboutPage from './pages/AboutPage';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import HomePage from './pages/HomePage';
 
 
 function App() {
   return (
     <div>
       <MainNavBar/>
-      <AboutPage />
+      <HomePage/>
     </div>
   );
 }
