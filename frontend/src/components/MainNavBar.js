@@ -1,3 +1,5 @@
+import React from 'react';
+
 function MainNavBar() {
   return (
     <nav className="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
