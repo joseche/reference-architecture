@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './App.css';
 import MainNavBar from './components/MainNavBar';
 import HomePage from './pages/HomePage';
