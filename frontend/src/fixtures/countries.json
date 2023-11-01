@@ -1,0 +1,62 @@
+[
+    {
+        "cid": 1,
+        "name": "United States",
+        "img": "https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg",
+        "desc": "A diverse nation known for its cultural melting pot, iconic landmarks, and innovation."
+    },
+    {
+        "cid": 2,
+        "name": "France",
+        "img": "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg",
+        "desc": "Renowned for its art, cuisine, and romantic ambiance, home to the Eiffel Tower and Louvre."
+    },
+    {
+        "cid": 3,
+        "name": "Japan",
+        "img": "https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg",
+        "desc": "A blend of tradition and modernity, famous for sushi, cherry blossoms, and technology."
+    },
+    {
+        "cid": 4,
+        "name": "Australia",
+        "img": "https://upload.wikimedia.org/wikipedia/en/b/b9/Flag_of_Australia.svg",
+        "desc": "Vast landscapes, unique wildlife, and beautiful coastlines define this island country."
+    },
+    {
+        "cid": 5,
+        "name": "Brazil",
+        "img": "https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg",
+        "desc": "Rich in biodiversity, vibrant culture, and known for its carnival celebrations."
+    },
+    {
+        "cid": 6,
+        "name": "South Africa",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg",
+        "desc": "Diverse landscapes, wildlife, and a complex history of cultural influences."
+    },
+    {
+        "cid": 7,
+        "name": "India",
+        "img": "https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg",
+        "desc": "A land of ancient traditions, diverse heritage, spirituality, and flavorsome cuisine."
+    },
+    {
+        "cid": 8,
+        "name": "Canada",
+        "img": "https://upload.wikimedia.org/wikipedia/en/c/cf/Flag_of_Canada.svg",
+        "desc": "Known for its stunning natural scenery, maple syrup, and welcoming locals."
+    },
+    {
+        "cid": 9,
+        "name": "China",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
+        "desc": "A country rich in history, culture, and home to the Great Wall and modern cities."
+    },
+    {
+        "cid": 10,
+        "name": "Germany",
+        "img": "https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg",
+        "desc": "Famous for its precision engineering, beer, sausages, and historical landmarks."
+    }
+]
